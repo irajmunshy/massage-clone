@@ -7,7 +7,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
-import { MaterialCommunityIcons, Octicons } from '@expo/vector-icons'; 
+import { FontAwesome5, MaterialCommunityIcons, MaterialIcons, Octicons } from '@expo/vector-icons'; 
 // import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
@@ -16,6 +16,8 @@ import MainTabNavigator from './MainTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 import Colors from '../constants/Colors';
 import { View } from '../components/Themed';
+import ChatRoomScreen from '../screens/ChatRoomScreen';
+import ContactsScreen from '../screens/ContactsScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -51,7 +53,7 @@ function RootNavigator() {
         name="Root" 
         component={MainTabNavigator} 
         options={{
-          title: 'Massage',
+          title: 'Message',
           headerRight: () => (
             <View style={{flexDirection: 'row', width: 60, justifyContent: 'space-between', marginRight: 10, backgroundColor: '#275958'}}>
               <Octicons name="search" size={22} color={'#fff'} />
@@ -59,6 +61,25 @@ function RootNavigator() {
             </View>
           )
         }}
+      />
+      <Stack.Screen 
+        name="ChatRoom"
+        component={ChatRoomScreen}
+        options={({ route })  => ({
+          title: route.params.name,
+          headerRight: () => (
+            <View style={{
+              flexDirection: 'row', width: 100, justifyContent: 'space-between', marginRight: 10, backgroundColor: '#275958',}}>
+              <FontAwesome5 name="video" size={22} color={'white'} />
+              <MaterialIcons name="call" size={22} color={'white'} />
+              <MaterialCommunityIcons name="dots-vertical" size={22} color={'white'} />
+            </View>
+          )
+        })}
+      />
+      <Stack.Screen 
+        name="Contacts" 
+        component={ContactsScreen} 
       />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>

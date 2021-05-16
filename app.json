@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "massage-clone",
-    "slug": "massage-clone",
+    "name": "message-clone",
+    "slug": "message-clone",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
